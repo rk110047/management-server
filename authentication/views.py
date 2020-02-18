@@ -88,9 +88,14 @@ class ProfileView(generics.GenericAPIView):
         Retreive a users profile without their security answer and question
         """
         user_object = User.objects.get(pk=request.user.pk)
+        user_profile = UserProfile.objects.get(user=request.user)
         user_data = model_to_dict(
             user_object,
             fields=['id', 'email'])
+        user_data1 = model_to_dict(
+            user_profile,
+            fields=['parental_lock', 'recording_time'])
+        
         # profile = UserProfile.objects.get(user=request.data)
         # print('user datasssss', profile)
         # profile_data = model_to_dict(
@@ -100,7 +105,8 @@ class ProfileView(generics.GenericAPIView):
         # print('user datasssss', profile_data)
         data = {
             "data": {
-                "profile": user_data
+                "profile": [user_data , user_data1],
+                
             },
             "message": "Profile retreived successfully"
         }

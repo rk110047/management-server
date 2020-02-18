@@ -25,7 +25,7 @@ from utils.permissions import (
     IsOwner,
     ReadOnly,
 )
-
+from django.contrib.auth.decorators import login_required
 from authentication.renderer import UserJSONRenderer
 
 class CreateAndListCategoryView(generics.ListCreateAPIView):
@@ -65,7 +65,7 @@ class CreateAndListChannelsView(generics.ListCreateAPIView):
     renderer_classes = (UserJSONRenderer,)
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['category', 'is_popular']
-
+    
     def get_queryset(self):
         user = self.request.user
 
