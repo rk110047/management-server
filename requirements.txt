@@ -16,7 +16,7 @@ incremental==16.10.1
 ipaddress==1.0.17
 keyring==10.6.0
 keyrings.alt==3.0
-numpy==1.13.3
+numpy==1.22.0
 PAM==0.4.2
 psycopg2==2.7.4
 pyasn1==0.4.2
